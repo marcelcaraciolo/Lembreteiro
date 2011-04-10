@@ -273,14 +273,14 @@ class UpdateStatusLembreteiro(webapp.RequestHandler):
             url = "https://www.imified.com/api/bot/"
 
             form_fields = {
-                "botkey": "495A77E2-C3D0-4B10-B8BB435CDF5BAA1E",    # Your bot key goes here.
+                "botkey": botkey,    # Your bot key goes here.
                 "apimethod": "updateStatus",  # the API method to call.
                 "msg": msg,
                 'network' : 'Jabber'
             }
 
             # Build the Basic Authentication string.  Don't forget the [:-1] at the end!
-            base64string = base64.encodestring('%s:%s' % ('caraciol@gmail.com', 'mpcara'))[:-1]
+            base64string = base64.encodestring('%s:%s' % (email, password))[:-1]
             authString = 'Basic %s' % base64string
 
             # Build the request post data.
