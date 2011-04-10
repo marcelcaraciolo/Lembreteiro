@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
+import string
 
 import gdata.calendar.service
 from datetime import datetime
@@ -10,12 +11,17 @@ HOJE = -2
 AMANHA = -1
 
 
+CONFIG_FILE = 'settings.txt'
+f = map(string.strip,open(CONFIG_FILE).readlines())
+email = f[1]
+password = f[3]
+
 class CalendarManager(object):
     
     def __init__(self,token=None):
         self.cal_client = gdata.calendar.service.CalendarService()
-        self.cal_client.email = ''
-        self.cal_client.password = ''
+        self.cal_client.email =  email
+        self.cal_client.password = password
         self.cal_client.source = 'lembreteiro-v0.1'
         self.cal_client.ProgrammaticLogin()
 
